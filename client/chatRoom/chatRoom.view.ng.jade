@@ -1,0 +1,34 @@
+.chat
+  section.chat-menu
+    .row
+      .col.text-center
+        img.img-box(ng-src="{{chat.user.profile.picture}}")
+      a.btn.btn-block.col(ng-click="chat.isEdit=true" ng-show="!chat.isEdit")
+        | {{chat.user.profile.nickName}}
+        i.fa.fa-pencil.mr-l-5
+      .col.nick-editor.input-group(ng-show="chat.isEdit")
+        input.form-control(type="text" ng-model="chat.user.profile.nickName")
+        span.input-group-btn
+          button.btn(ng-click="chat.saveNick()")
+            i.fa.fa-floppy-o
+      a.col.btn-block.btn(ng-click="chat.logout()")
+        | Logout
+        i.fa.fa-sign-out.mr-l-5
+    .divider
+    .row
+      .col.text-center
+        | Users Online
+      .col.user-online(ng-repeat="u in chat.userList")
+       | {{u.profile.nickName}}
+  section.chat-container
+    .col-xs-12.chat-content(ng-scroll-bottom="chat.messages")
+      p(ng-repeat="msg in chat.messages")
+        span.nick-name {{msg.nickName}}
+        span.created-at {{msg.createdAt | date:'MM-dd HH:mm:ss'}}
+        span.content {{msg.content}}
+    .col-xs-12.chat-input
+      form.input-group(ng-submit="chat.add()")
+        input.form-control(type="text" ng-model="chat.content")
+        span.input-group-btn
+          button.btn(type="submit")
+            i.fa.fa-paper-plane

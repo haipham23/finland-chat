@@ -1,0 +1,110 @@
+@import "../app.less";
+
+.chat {
+
+  .divider {
+    border-bottom: 1px solid @white;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  &-menu {
+    height: 100%;
+    background-color: #eee;
+    position: absolute;
+    width: 20%;
+    left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .img-box {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      width: 50%;
+    }
+
+    .nick-editor {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .user-online {
+      text-align: center;
+      font-size: .8em;
+
+      &:before {
+        content: "\f111";
+        font-family: "FontAwesome";
+        color: @green-md;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &-container {
+    height: 100%;
+    position: absolute;
+    width: 80%;
+    left: 20%;
+  }
+
+  &-content {
+    height: 90%;
+    display: block;
+    overflow-x: scroll;
+
+    p {
+      border-top: 1px solid @grey;
+      margin-bottom: 5px;
+      padding-top: 5px;
+    }
+
+    .nick-name {
+      text-align: left;
+      font-size: .7em;
+      font-weight: 600;
+      color: @black;
+      margin-right: 5px;
+    }
+
+    .created-at {
+      text-align: left;
+      font-size: .6em;
+      color: darken(@grey, 50%);
+    }
+
+    .content {
+      display: block;
+    }
+  }
+
+  &-input {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+
+    input {
+      border-color: @blue-md;
+      color: @blue-md;
+
+      &:active, &:hover {
+        border-color: @blue-md;
+      }
+    }
+
+    .btn {
+      border-color: @blue-md;
+      color: @blue-md;
+
+      &:active, &:hover {
+        background-color: @blue-md;
+        color: @white;
+      }
+    }
+  }
+
+  .mr-l-5 {
+    margin-left: 5px;
+  }
+}

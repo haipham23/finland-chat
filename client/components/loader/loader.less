@@ -1,0 +1,65 @@
+@import '../../app.less';
+
+/*****************
+* LOADER
+*****************/
+
+.loader-wrapper {
+  height: 100vh;
+  background-color: @grey;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  display: none;
+  top: 0;
+  left: 0;
+}
+
+.loader-active {
+  display: block !important;
+}
+
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: .3em solid rgba(255, 255, 255, 0.8);
+  border-right: .3em solid rgba(255, 255, 255, 0.8);
+  border-bottom: .3em solid rgba(255, 255, 255, 0.8);
+  border-left: .3em solid #004d40;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+  top: 30vh;
+  transform: translate(-50%,-50%);
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
