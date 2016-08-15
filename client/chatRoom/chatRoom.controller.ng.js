@@ -7,14 +7,10 @@ angular.module('chatApp')
   $scope.viewModel(vm);
 
   vm.subscribe('messages');
-  vm.subscribe('usersOnline');
 
   vm.helpers({
     messages: function() {
       return Messages.find({});
-    },
-    userList: function() {
-      return Meteor.users.find({ 'status.online': true });
     }
   });
 

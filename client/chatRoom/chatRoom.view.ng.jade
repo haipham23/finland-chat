@@ -14,12 +14,6 @@
       a.col.btn-block.btn(ng-click="chat.logout()")
         | Logout
         i.fa.fa-sign-out.mr-l-5
-    .divider
-    .row
-      .col.text-center
-        | Users Online
-      .col.user-online(ng-repeat="u in chat.userList")
-       | {{u.profile.nickName}}
   section.chat-container
     .col-xs-12.chat-content(ng-scroll-bottom="chat.messages")
       p(ng-repeat="msg in chat.messages")

@@ -24,21 +24,18 @@
       width: 50%;
     }
 
+    a {
+      color: @blue-md;
+
+      &:hover, &:focus, &:active {
+        color: darken(@blue-md, 10%);
+      }
+    }
+
     .nick-editor {
       padding-left: 10px;
       padding-right: 10px;
-    }
-
-    .user-online {
-      text-align: center;
-      font-size: .8em;
-
-      &:before {
-        content: "\f111";
-        font-family: "FontAwesome";
-        color: @green-md;
-        margin-right: 5px;
-      }
+      color: @blue-md;
     }
   }
 
@@ -88,7 +85,7 @@
       border-color: @blue-md;
       color: @blue-md;
 
-      &:active, &:hover {
+      &:hover, &:focus, &:active {
         border-color: @blue-md;
       }
     }
@@ -97,7 +94,7 @@
       border-color: @blue-md;
       color: @blue-md;
 
-      &:active, &:hover {
+      &:hover, &:focus, &:active {
         background-color: @blue-md;
         color: @white;
       }
