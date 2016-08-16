@@ -13,6 +13,7 @@ TODO
 - [ ] Add Tests!
 - [ ] Create channels
 - [ ] Create direct message
+- [ ] New message notification
 - [ ] Generate unique nickname
 - [ ] Display online users
 - [ ] Login using Google
