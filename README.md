@@ -10,6 +10,7 @@ DONE
 
 TODO
 ---
+- [ ] Create account!
 - [ ] Add Tests!
 - [ ] Create channels
 - [ ] Create direct message
