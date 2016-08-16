@@ -19,7 +19,6 @@ angular.module('chatApp')
 
     $timeout(function() {
       vm.user = Meteor.user();
-      vm.nickName = vm.user.profile.nickName;
       utils.stopLoading(200);
     }, 1000);
   };
@@ -39,11 +38,15 @@ angular.module('chatApp')
     }
   };
 
+  vm.editNick = function() {
+    vm.nickName = angular.copy(vm.user.profile.nickName);
+  };
+
   vm.saveNick = function() {
     if(vm.nickName && /^([a-zA-Z0-9]){3,10}$/.test(vm.nickName)) {
-      vm.user.profile.nickName = vm.nickName;
-      Meteor.call('save-nick', vm.nickName);
-      vm.isEdit = false;
+      vm.user.profile.nickName = angular.copy(vm.nickName);
+      Meteor.call('save-nick', vm.user.profile.nickName);
+      delete vm.nickName;
     }
   };
 

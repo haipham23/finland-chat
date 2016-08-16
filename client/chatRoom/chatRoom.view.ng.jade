@@ -3,10 +3,10 @@
     .row
       .col.text-center
         img.img-box(ng-src="{{chat.user.profile.picture}}")
-      a.btn.btn-block.col(ng-click="chat.isEdit=true" ng-show="!chat.isEdit")
+      a.btn.btn-block.col(ng-click="chat.editNick()" ng-show="!chat.nickName")
         | {{chat.user.profile.nickName}}
         i.fa.fa-pencil.mr-l-5
-      form.col.nick-editor.input-group(ng-show="chat.isEdit" ng-submit="chat.saveNick()")
+      form.col.nick-editor.input-group(ng-show="chat.nickName" ng-submit="chat.saveNick()")
         input.form-control.input-blue(type="text" ng-model="chat.nickName")
         span.input-group-btn
           button.btn.btn-blue(type="submit")
