@@ -8,6 +8,7 @@ DONE
 - [x] All users can send and read messages
 - [x] User can change and save his nickname
 - [x] Create account
+- [x] Add custom html (image, video, gif...) to message
 
 TODO
 ---
@@ -20,7 +21,6 @@ TODO
 - [ ] New message notification
 - [ ] User can edit his previous messages
 - [ ] User can remove his previous messages
-- [ ] Add custom html (image, video, gif...) to message
 - [ ] Add ssl using letsencrypt
 - [ ] Deployment using Codeship
 
