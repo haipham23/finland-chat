@@ -2,9 +2,9 @@
 
 .main {
   .divider {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid @grey;
   }
 
   .login-block {
@@ -46,6 +46,13 @@
     }
   }
 
+  .btn-gr {
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 2px;
+  }
+
   .btn-red {
     background-color: @grey;
     color: @white;
@@ -53,5 +60,11 @@
     &:hover, &:active {
       background-color: @grey;
     }
+  }
+
+  .error {
+    color: @red-md;
+    font-size: .8em;
+    margin-top: 20px;
   }
 }

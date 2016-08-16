@@ -2,7 +2,22 @@
   section.container
     .row.text-center
       h1.f-dancing Chat App
-    .row.text-center.login-block
+    .row.text-center
+      .container
+        form.login-form.col-sm-6.col-sm-offset-3.col-lg-4.col-lg-offset-4(novalidate autocomplete="off")
+          input(style="display:none", type="text")
+          input(style="display:none", type="password")
+          .form-group
+            input#login-name.form-control.login-field(type="email", ng-model="main.form.email", placeholder="Email address")
+            label.login-field-icon.fui-user(for="login-name")
+          .form-group
+            input#login-pass.form-control.login-field(type="password", ng-model="main.form.password", placeholder="Password")
+            label.login-field-icon.fui-lock(for="login-pass")
+          a.btn.btn-primary.btn-gr(ng-click="main.register()") Signup
+          a.btn.btn-blue.btn-gr(ng-click="main.login()") Log in
+          .error(ng-bind="main.error")
+    .divider
+    .row.text-center
       button.btn.btn-login.btn-blue.mr-b-10(ng-click="main.loginWithFacebook()")
         i.fa.fa-facebook-square.mr-10
         | Login with Facebook

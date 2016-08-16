@@ -16,7 +16,21 @@ Meteor.methods({
   },
   'save-nick'(nick) {
     Meteor.users.update({_id: this.userId}, { $set: { 'profile.nickName': nick } });
+  },
+  'register'(account) {
+    if(!account.email || !account.password) {
+      throw new Meteor.Error('Incorrect email or password');
+    }
+
+    return Accounts.createUser({
+      email: account.email,
+      password: account.password
+    });
   }
+});
+
+Meteor.users.deny({
+  update() { return true; }
 });
 
 // Accounts.onCreateUser( ( options, user )=> {
@@ -75,9 +89,14 @@ Meteor.methods({
 
 Accounts.onCreateUser(function(options, user) {
   if (options.profile) {
-    options.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=large`;
     user.profile = options.profile;
-    user.profile.nickName = 'User' + Math.floor((Math.random() * 10000));
+    user.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=large`;
+  } else {
+    user.profile = {
+      picture: '/images/chat.svg'
+    };
   }
+
+  user.profile.nickName = 'User' + Math.floor((Math.random() * 10000));
   return user;
 });

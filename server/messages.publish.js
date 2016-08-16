@@ -1,7 +1,7 @@
 'use strict'
 
 Meteor.publish('messages', function() {
-  return Messages.find({}, {sort: {createdAt : 1}, limit: 100});
+  return Messages.find({}, {sort: {createdAt : 1}, limit: 1000});
 });
 
 Meteor.methods({

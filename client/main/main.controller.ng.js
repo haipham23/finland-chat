@@ -27,6 +27,40 @@ angular.module('chatApp')
     });
   };
 
+  vm.register = function() {
+    if(!vm.form.email || !vm.form.password) {
+      vm.error = 'Incorrect email or password';
+      return;
+    }
+
+    Meteor.call('register', {
+      email: vm.form.email,
+      password: vm.form.password
+    }, function(err, id) {
+      if(err) {
+        vm.error = err.error;
+      } else {
+        vm.login();
+      }
+    });
+  };
+
+  vm.login = function() {
+    if(!vm.form.email || !vm.form.password) {
+      vm.error = 'Incorrect email or password';
+      return;
+    }
+
+    Meteor.loginWithPassword(vm.form.email, vm.form.password, function(err) {
+      if(err) {
+        vm.error = err.reason;
+        utils.stopLoading(0);
+      } else {
+        vm.start();
+      }
+    });
+  };
+
   // vm.loginWithGoogle = function() {
   //   Meteor.loginWithGoogle({
   //     requestPermissions: ['public_profile', 'email']
