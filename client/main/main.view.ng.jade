@@ -2,9 +2,13 @@
   section.container
     .row.text-center
       h1.f-dancing Chat App
-    .row.text-center.login
-      button.btn.btn-login.mr-b-10(ng-click="main.loginWithFacebook()")
+    .row.text-center.login-block
+      button.btn.btn-login.btn-blue.mr-b-10(ng-click="main.loginWithFacebook()")
         i.fa.fa-facebook-square.mr-10
         | Login with Facebook
     .row.text-center
+      button.btn.btn-login.btn-red.mr-b-10(disaled="disaled")
+        i.fa.fa-google-plus-square.mr-10
+        | Login with Google
+    .row.copy-block
       | Copyright © 2016 by Hai Pham
