@@ -2,12 +2,12 @@
   section.chat-menu
     .row
       .col.text-center
-        img.img-box(ng-src="{{chat.user.profile.picture}}")
-      a.btn.btn-block.col(ng-click="chat.editNick()" ng-show="!chat.nickName")
-        | {{chat.user.profile.nickName}}
+        img.img-box(ng-src="{{chat.user.picture}}")
+      a.btn.btn-block.col(ng-click="chat.isNickEdit=true" ng-show="!chat.isNickEdit")
+        | {{chat.user.nickName}}
         i.fa.fa-pencil.mr-l-5
-      form.col.nick-editor.input-group(ng-show="chat.nickName" ng-submit="chat.saveNick()")
-        input.form-control.input-blue(type="text" ng-model="chat.nickName")
+      form.col.nick-editor.input-group(ng-show="chat.isNickEdit" ng-submit="chat.saveNick()")
+        input.form-control.input-blue(type="text" ng-model="chat.user.nickName")
         span.input-group-btn
           button.btn.btn-blue(type="submit")
             i.fa.fa-floppy-o

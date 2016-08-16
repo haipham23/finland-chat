@@ -10,6 +10,10 @@ Meteor.publish('usersOnline', function() {
 });
 
 Meteor.methods({
+  'get-details'() {
+    var user = Meteor.users.findOne({_id: this.userId});
+    return user.profile;
+  },
   'save-nick'(nick) {
     Meteor.users.update({_id: this.userId}, { $set: { 'profile.nickName': nick } });
   }
