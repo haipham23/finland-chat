@@ -47,8 +47,6 @@ angular.module('chatApp')
 
   vm.saveNick = function() {
     if(/^([a-zA-Z0-9\s]){3,10}$/.test(vm.nickName)) {
-      vm.user.nickName = vm.nickName;
-
       Meteor.call('save-nick', vm.nickName, function(err) {
         vm.user.nickName = vm.nickName;
         vm.subscribe('messages');
