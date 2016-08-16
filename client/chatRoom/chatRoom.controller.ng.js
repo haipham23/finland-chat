@@ -26,8 +26,15 @@ angular.module('chatApp')
   vm.add = function() {
 
     if(/^.{1,1000}$/.test(vm.content)) {
+
+      var content = angular.copy(vm.content);
+
+      if(/^.*(jpg|png|svg|gif).*/.test(content)) {
+        content = `<img src="${content}"/>`;
+      }
+
       var msg = {
-        content: vm.content,
+        content: content,
         nickName: vm.user.nickName
       };
 
@@ -39,7 +46,7 @@ angular.module('chatApp')
   };
 
   vm.saveNick = function() {
-    if(/^([a-zA-Z0-9]){3,10}$/.test(vm.user.nickName)) {
+    if(/^([a-zA-Z0-9\s]){3,10}$/.test(vm.user.nickName)) {
       Meteor.call('save-nick', vm.user.nickName, function(err) {
         vm.subscribe('messages');
       });

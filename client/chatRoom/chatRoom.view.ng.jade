@@ -19,7 +19,7 @@
       p(ng-repeat="msg in chat.messages")
         span.nick-name {{msg.nickName}}
         span.created-at {{msg.createdAt | date:'MM-dd HH:mm:ss'}}
-        span.content {{msg.content}}
+        span.content(ng-bind-html="msg.content")
     .col-xs-12.chat-input
       form.input-group(ng-submit="chat.add()")
         input.form-control.input-blue(type="text" ng-model="chat.content" ng-minlength="1" ng-maxlength="200")
