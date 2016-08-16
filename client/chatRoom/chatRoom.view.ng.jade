@@ -6,10 +6,10 @@
       a.btn.btn-block.col(ng-click="chat.isEdit=true" ng-show="!chat.isEdit")
         | {{chat.user.profile.nickName}}
         i.fa.fa-pencil.mr-l-5
-      .col.nick-editor.input-group(ng-show="chat.isEdit")
-        input.form-control(type="text" ng-model="chat.user.profile.nickName")
+      form.col.nick-editor.input-group(ng-show="chat.isEdit" ng-submit="chat.saveNick()")
+        input.form-control.input-blue(type="text" ng-model="chat.nickName")
         span.input-group-btn
-          button.btn(ng-click="chat.saveNick()")
+          button.btn.btn-blue(type="submit")
             i.fa.fa-floppy-o
       a.col.btn-block.btn(ng-click="chat.logout()")
         | Logout
@@ -22,7 +22,7 @@
         span.content {{msg.content}}
     .col-xs-12.chat-input
       form.input-group(ng-submit="chat.add()")
-        input.form-control(type="text" ng-model="chat.content")
+        input.form-control.input-blue(type="text" ng-model="chat.content" ng-minlength="1" ng-maxlength="200")
         span.input-group-btn
-          button.btn(type="submit")
+          button.btn.btn-blue(type="submit")
             i.fa.fa-paper-plane
