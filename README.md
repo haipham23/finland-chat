@@ -11,6 +11,8 @@ DONE
 TODO
 ---
 - [ ] Add Tests!
+- [ ] Create channels
+- [ ] Create direct message
 - [ ] Generate unique nickname
 - [ ] Display online users
 - [ ] Login using Google
