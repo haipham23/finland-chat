@@ -43,10 +43,14 @@ angular.module('chatApp')
   };
 
   vm.saveNick = function() {
-    if(vm.nickName && /^([a-zA-Z0-9]){3,10}$/.test(vm.nickName)) {
-      vm.user.profile.nickName = angular.copy(vm.nickName);
-      Meteor.call('save-nick', vm.user.profile.nickName);
+    if(vm.nickName === vm.user.profile.nickName) {
       delete vm.nickName;
+    } else if(vm.nickName && /^([a-zA-Z0-9]){3,10}$/.test(vm.nickName)) {
+      vm.user.profile.nickName = angular.copy(vm.nickName);
+
+      Meteor.call('save-nick', vm.user.profile.nickName, function(err) {
+        delete vm.nickName;
+      });
     }
   };
 
