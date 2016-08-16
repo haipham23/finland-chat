@@ -40,7 +40,10 @@ angular.module('chatApp')
 
   vm.saveNick = function() {
     if(/^([a-zA-Z0-9]){3,10}$/.test(vm.user.nickName)) {
-      Meteor.call('save-nick', vm.user.nickName);
+      Meteor.call('save-nick', vm.user.nickName, function(err) {
+        vm.subscribe('messages');
+      });
+
       vm.isNickEdit = false;
     }
   };
