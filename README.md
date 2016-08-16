@@ -11,6 +11,7 @@ DONE
 TODO
 ---
 - [ ] Add Tests!
+- [ ] Generate unique nickname
 - [ ] Login using Google
 - [ ] User can edit his previous messages
 - [ ] User can remove his previous messages
