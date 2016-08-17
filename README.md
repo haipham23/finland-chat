@@ -9,11 +9,14 @@ DONE
 - [x] User can change and save his nickname
 - [x] Create account
 - [x] Add custom html (image, video, gif...) to message
+- [ ] ~~Generate unique nickname~~
+- [x] Use email as first nickname
+- [x] Check if nickname is unique when editing
+- [x] Display online users
 
 TODO
 ---
-- [ ] Generate unique nickname
-- [ ] Display online users
+
 - [ ] Login using Google
 - [ ] Add Tests !
 - [ ] Create channels
