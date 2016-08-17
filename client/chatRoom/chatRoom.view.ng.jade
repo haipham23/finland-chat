@@ -27,7 +27,7 @@
           i.fa.fa-pencil
         span.is-edited(ng-if="msg.isEdited")
           | - Edited
-        span.content(ng-bind-html="msg.content")
+        span.content(ng-bind-html="chat.parseEmoji(msg.content)")
     .chat-input
       form.input-group(ng-submit="chat.saveMsg()")
         input.form-control.input-blue(type="text" ng-model="chat.msg.content" ng-minlength="1" ng-maxlength="200")

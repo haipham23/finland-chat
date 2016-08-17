@@ -8,6 +8,7 @@ angular.module('chatApp')
 
   vm.subscribe('messages');
   vm.subscribe('usersOnline');
+  vm.subscribe('emojis');
 
   vm.helpers({
     messages: function() {
@@ -43,8 +44,10 @@ angular.module('chatApp')
       // clear content
       vm.msg = {};
     }
+  };
 
-
+  vm.parseEmoji = function(msg) {
+    return Emojis.parse(msg);
   };
 
   vm.editMsg = function(msg) {
