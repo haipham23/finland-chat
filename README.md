@@ -27,6 +27,7 @@ TODO
 - [ ] User can remove his previous messages
 - [ ] Add ssl using letsencrypt
 - [ ] Deployment using Codeship
+- [ ] Add domain (for Google Auth)
 
 
 License
