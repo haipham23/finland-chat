@@ -13,11 +13,12 @@ DONE
 - [x] Use email as first nickname
 - [x] Check if nickname is unique when editing
 - [x] Display online users
+- [x] Login using Google
+- [x] Support responsive in chat room
 
 TODO
 ---
 
-- [ ] Login using Google
 - [ ] Add Tests !
 - [ ] Create channels
 - [ ] Create direct message
