@@ -7,6 +7,10 @@ Meteor.publish('messages', function() {
 Meteor.methods({
   saveMessage(msg) {
 
+    if(msg.content) {
+      msg.content = Emojis.parse(msg.content);
+    }
+
     if(!msg.owner && this.userId) {
       Messages.insert({
         owner: this.userId,
