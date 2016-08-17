@@ -15,7 +15,11 @@ Meteor.methods({
     return user.profile;
   },
   'save-nick'(nick) {
-    Meteor.users.update({_id: this.userId}, { $set: { 'profile.nickName': nick } });
+    if(Meteor.users.find({'profile.nickName': nick}).count() > 0) {
+      throw new Meteor.Error('This nick name is not available');
+    }
+
+    return Meteor.users.update({_id: this.userId}, { $set: { 'profile.nickName': nick } });
   },
   'register'(account) {
     if(!account.email || !account.password) {
@@ -90,23 +94,23 @@ Meteor.users.deny({
 Accounts.onCreateUser(function(options, user) {
   if (options.profile) {
     user.profile = options.profile;
-    user.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=round`;
+    user.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=small`;
   } else {
     user.profile = {
       picture: '/images/chat.svg'
     };
   }
 
-  user.profile.nickName = _generateNick();
+  user.profile.nickName = options.email;
   return user;
 });
 
-function _generateNick() {
-  let nickName = `User ${Math.floor((Math.random() * 10000))}`;
-
-  while(Meteor.users.find({'profile.nickName': nickName}).count() > 0) {
-    nickName = `User ${Math.floor((Math.random() * 10000))}`;
-  }
-
-  return nickName;
-}
+// function _generateNick() {
+//   let nickName = `User ${Math.floor((Math.random() * 1000000))}`;
+//
+//   while(Meteor.users.find({'profile.nickName': nickName}).count() > 0) {
+//     nickName = `User ${Math.floor((Math.random() * 1000000))}`;
+//   }
+//
+//   return nickName;
+// }
