@@ -3,28 +3,28 @@
     .row
       .col.text-center
         img.img-box(ng-src="{{chat.user.picture}}")
-      a.btn.btn-block.col(ng-click="chat.nickName = chat.user.nickName" ng-show="!chat.nickName")
+      a.hidden-xs.btn.btn-block.col(ng-click="chat.nickName = chat.user.nickName" ng-show="!chat.nickName")
         | {{chat.user.nickName}}
         i.fa.fa-pencil.mr-l-5
-      form.col.nick-editor.input-group(ng-show="chat.nickName" ng-submit="chat.saveNick()")
+      form.hidden-xs.col.nick-editor.input-group(ng-show="chat.nickName" ng-submit="chat.saveNick()")
         input.form-control.input-blue(type="text" ng-model="chat.nickName")
         span.input-group-btn
           button.btn.btn-blue(type="submit")
             i.fa.fa-floppy-o
       a.col.btn-block.btn(ng-click="chat.logout()")
-        | Logout
+        span.hidden-xs Logout
         i.fa.fa-sign-out.mr-l-5
       .online-users
         a.col.btn-block.btn.btn-user(ng-repeat="u in chat.usersOnline")
           img.img-avatar(ng-src="{{u.profile.picture}}")
-          | {{u.profile.nickName}}
+          span.hidden-xs {{u.profile.nickName}}
   section.chat-container
     .col-xs-12.chat-content(ng-scroll-bottom="chat.messages")
       p(ng-repeat="msg in chat.messages")
         span.nick-name {{msg.nickName}}
         span.created-at {{msg.createdAt | date:'MM-dd HH:mm:ss'}}
         span.content(ng-bind-html="msg.content")
-    .col-xs-12.chat-input
+    .chat-input
       form.input-group(ng-submit="chat.add()")
         input.form-control.input-blue(type="text" ng-model="chat.content" ng-minlength="1" ng-maxlength="200")
         span.input-group-btn
