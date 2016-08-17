@@ -6,13 +6,18 @@ Accounts.config({
 });
 
 Meteor.publish('usersOnline', function() {
-  return Meteor.users.find({ 'status.online': true });
+  return Meteor.users.find({ 'status.online': true }, { fields: { profile: 1 } });
 });
 
 Meteor.methods({
   'get-details'() {
     var user = Meteor.users.findOne({_id: this.userId});
-    return user.profile;
+
+    if(user) {
+      return user.profile;
+    } else {
+      throw new Meteor.Error('User not found');
+    }
   },
   'save-nick'(nick) {
     if(Meteor.users.find({'profile.nickName': nick}).count() > 0) {

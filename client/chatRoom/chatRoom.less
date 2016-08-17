@@ -17,11 +17,31 @@
     padding-left: 10px;
     padding-right: 10px;
 
+    .online-users {
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid @white;
+
+      a {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .img-avatar {
+        border-radius: 50%;
+        width: 24px;
+        margin-right: 5px;
+      }
+    }
+
+
     .img-box {
       margin-top: 20px;
       margin-bottom: 20px;
       border-radius: 50%;
       width: 50%;
+      border: 1px solid @dark-grey;
     }
 
     a {
