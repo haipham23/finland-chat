@@ -97,16 +97,38 @@ Meteor.users.deny({
 // } );
 
 Accounts.onCreateUser(function(options, user) {
-  if (options.profile) {
-    user.profile = options.profile;
-    user.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=small`;
-  } else {
-    user.profile = {
-      picture: '/images/chat.svg'
-    };
+  let profile = {},
+      service = Object.keys(user.services)[0],
+      data = service ? user.services[service] : undefined;
+
+  if(service === 'facebook') {
+    profile.network   = service;
+    profile.id        = data.id;
+    profile.email     = data.email;
+    profile.nickName  = options.email;
+    profile.name      = data.name;
+    profile.locale    = data.locale;
+    profile.gender    = data.gender;
+    profile.picture   = `http://graph.facebook.com/${data.id}/picture?type=square`;
   }
 
-  user.profile.nickName = options.email;
+  else if(service === 'google') {
+    profile.network   = service;
+    profile.id        = data.id;
+    profile.email     = data.email;
+    profile.nickName  = options.email;
+    profile.name      = data.name;
+    profile.locale    = data.locale;
+    profile.picture   = data.picture;
+  }
+
+  else {
+    profile.picture = '/images/chat.svg';
+    profile.nickName = options.email;
+  }
+
+  user.profile = profile;
+
   return user;
 });
 

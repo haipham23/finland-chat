@@ -61,17 +61,17 @@ angular.module('chatApp')
     });
   };
 
-  // vm.loginWithGoogle = function() {
-  //   Meteor.loginWithGoogle({
-  //     requestPermissions: ['public_profile', 'email']
-  //   }, function(err) {
-  //     if (err) {
-  //       throw new Meteor.Error('Google login failed');
-  //     } else {
-  //       vm.start();
-  //     }
-  //   });
-  // };
+  vm.loginWithGoogle = function() {
+    Meteor.loginWithGoogle({
+      requestPermissions: ['profile', 'email']
+    }, function(err) {
+      if (err) {
+        throw new Meteor.Error('Google login failed');
+      } else {
+        vm.start();
+      }
+    });
+  };
 
   vm.start = function() {
     utils.startLoading(0);

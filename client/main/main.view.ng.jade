@@ -16,13 +16,14 @@
           a.btn.btn-primary.btn-gr(ng-click="main.register()") Signup
           a.btn.btn-blue.btn-gr(ng-click="main.login()") Log in
           .error(ng-bind="main.error")
-    .divider
+    .row.text-center
+      .divider
     .row.text-center
       button.btn.btn-login.btn-blue.mr-b-10(ng-click="main.loginWithFacebook()")
         i.fa.fa-facebook-square.mr-10
         | Login with Facebook
     .row.text-center
-      button.btn.btn-login.btn-red.mr-b-10(disaled="disaled")
+      button.btn.btn-login.btn-red.mr-b-10(ng-click="main.loginWithGoogle()")
         i.fa.fa-google-plus-square.mr-10
         | Login with Google
     .copy-block

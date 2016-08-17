@@ -55,7 +55,7 @@ angular.module('chatApp')
       return;
     }
 
-    if(/^.{1,1000}$/.test(vm.nickName)) {
+    if(/^.{1,100}$/.test(vm.nickName)) {
       Meteor.call('save-nick', vm.nickName, function(err) {
         if(err) {
           toastr.error(err.error);
