@@ -23,10 +23,14 @@
       p(ng-repeat="msg in chat.messages")
         span.nick-name {{msg.nickName}}
         span.created-at {{msg.createdAt | date:'MM-dd HH:mm:ss'}}
+        a.btn.btn-edit-msg(ng-if="msg.owner === currentUser._id" ng-click="chat.editMsg(msg)")
+          i.fa.fa-pencil
+        span.is-edited(ng-if="msg.isEdited")
+          | - Edited
         span.content(ng-bind-html="msg.content")
     .chat-input
-      form.input-group(ng-submit="chat.add()")
-        input.form-control.input-blue(type="text" ng-model="chat.content" ng-minlength="1" ng-maxlength="200")
+      form.input-group(ng-submit="chat.saveMsg()")
+        input.form-control.input-blue(type="text" ng-model="chat.msg.content" ng-minlength="1" ng-maxlength="200")
         span.input-group-btn
           button.btn.btn-blue(type="submit")
             i.fa.fa-paper-plane

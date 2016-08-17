@@ -19,7 +19,7 @@ angular.module('chatApp')
   });
 
   vm.init = function() {
-    vm.content = '';
+    vm.msg = {};
 
     Meteor.call('get-details', function(err, profile) {
       vm.user = profile;
@@ -27,26 +27,28 @@ angular.module('chatApp')
     });
   };
 
-  vm.add = function() {
+  vm.saveMsg = function() {
+    if(vm.msg.owner && !vm.msg.content) {
+      vm.msg.content = '<span class="is-edited">- Deleted</span>';
+    }
 
-    if(/^.{1,1000}$/.test(vm.content)) {
+    if(/^.{1,1000}$/.test(vm.msg.content)) {
 
-      var content = angular.copy(vm.content);
-
-      if(/^.*(jpg|png|svg|gif).*/.test(content)) {
-        content = `<img src="${content}"/>`;
+      if(!vm.msg.nickName) {
+        vm.msg.nickName = vm.user.nickName;
       }
 
-      var msg = {
-        content: content,
-        nickName: vm.user.nickName
-      };
-
-      Meteor.call('chat-insert', msg);
+      Meteor.call('saveMessage', vm.msg);
 
       // clear content
-      vm.content = '';
+      vm.msg = {};
     }
+
+
+  };
+
+  vm.editMsg = function(msg) {
+    vm.msg = angular.copy(msg);
   };
 
   vm.saveNick = function() {

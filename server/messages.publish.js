@@ -5,16 +5,29 @@ Meteor.publish('messages', function() {
 });
 
 Meteor.methods({
-  'chat-insert'(msg) {
-    if(!this.userId) throw new Meteor.Error('Not authorized');
+  saveMessage(msg) {
 
-    Messages.insert({
-      owner: this.userId,
-      nickName: msg.nickName,
-      content: msg.content,
-      createdAt: new Date(),
-      isEdited: false
-    });
+    if(!msg.owner && this.userId) {
+      Messages.insert({
+        owner: this.userId,
+        nickName: msg.nickName,
+        content: msg.content,
+        createdAt: new Date(),
+        isEdited: false
+      });
+    }
+
+    else if(msg.owner && msg.owner === this.userId) {
+      Messages.update({_id: msg._id}, {$set: {
+        nickName: msg.nickName,
+        content: msg.content,
+        isEdited: true
+      }});
+    }
+
+    else {
+      throw new Meteor.Error('Not authorized');
+    }
 
   }
 });
