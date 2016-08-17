@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('chatApp')
-.controller('ChatCtrl', function($scope, $reactive, $rootScope, $timeout, utils, $state, $window) {
+.controller('ChatCtrl', function($scope, $reactive, $rootScope, $timeout, utils, $state, $window, $sce) {
   var vm = this;
 
   $scope.viewModel(vm);
@@ -46,8 +46,14 @@ angular.module('chatApp')
     }
   };
 
-  vm.parseEmoji = function(msg) {
-    return Emojis.parse(msg);
+  vm.parseHtml = function(msg) {
+    var m = Emojis.parse(msg);
+
+    m = m.replace(/https?:\/\/(.*?)\.(jpg|png|gif)(\?\w+=\w+)?/i, function(link) {
+      return `<img src="${link}"/>`;
+    });
+
+    return m;
   };
 
   vm.editMsg = function(msg) {
