@@ -90,13 +90,23 @@ Meteor.users.deny({
 Accounts.onCreateUser(function(options, user) {
   if (options.profile) {
     user.profile = options.profile;
-    user.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=large`;
+    user.profile.picture = `http://graph.facebook.com/${user.services.facebook.id}/picture/?type=round`;
   } else {
     user.profile = {
       picture: '/images/chat.svg'
     };
   }
 
-  user.profile.nickName = 'User' + Math.floor((Math.random() * 10000));
+  user.profile.nickName = _generateNick();
   return user;
 });
+
+function _generateNick() {
+  let nickName = `User ${Math.floor((Math.random() * 10000))}`;
+
+  while(Meteor.users.find({'profile.nickName': nickName}).count() > 0) {
+    nickName = `User ${Math.floor((Math.random() * 10000))}`;
+  }
+
+  return nickName;
+}
