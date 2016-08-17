@@ -16,11 +16,11 @@ DONE
 - [x] Login using Google
 - [x] Support responsive in chat room
 - [x] User can edit and remove his previous messages
+- [x] Add emoji
 
 TODO
 ---
 
-- [ ] Add emoji
 - [ ] Add Tests !
 - [ ] Create channels
 - [ ] Create direct message
