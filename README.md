@@ -15,16 +15,16 @@ DONE
 - [x] Display online users
 - [x] Login using Google
 - [x] Support responsive in chat room
+- [x] User can edit and remove his previous messages
 
 TODO
 ---
 
+- [ ] Add emoji
 - [ ] Add Tests !
 - [ ] Create channels
 - [ ] Create direct message
 - [ ] New message notification
-- [ ] User can edit his previous messages
-- [ ] User can remove his previous messages
 - [ ] Add ssl using letsencrypt
 - [ ] Deployment using Codeship
 - [ ] Add domain (for Google Auth)
