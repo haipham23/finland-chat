@@ -64,18 +64,27 @@
   }
 
   &-container {
-    margin-left: 40px;
+    width: 100%;
+    padding-left: 40px;
 
     @media(min-width: @screen-sm) {
-      margin-left: 240px;
+      padding-left: 240px;
     }
   }
 
   &-content {
     height: 90%;
+    width: 100%;
+    left: 0;
+    padding-left: 55px;
+    padding-right: 15px;
     display: block;
     overflow-x: scroll;
     position: absolute;
+
+    @media(min-width: @screen-sm) {
+      padding-left: 255px;
+    }
 
     p {
       border-top: 1px solid @grey;

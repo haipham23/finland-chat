@@ -35,6 +35,8 @@ angular.module('chatApp')
 
     if(/^.{1,1000}$/.test(vm.msg.content)) {
 
+      console.log(vm.msg.content);
+
       if(!vm.msg.nickName) {
         vm.msg.nickName = vm.user.nickName;
       }
@@ -47,13 +49,19 @@ angular.module('chatApp')
   };
 
   vm.parseHtml = function(msg) {
-    var m = Emojis.parse(msg);
 
-    m = m.replace(/https?:\/\/(.*?)\.(jpg|png|gif)(\?\w+=\w+)?/i, function(link) {
-      return `<img src="${link}"/>`;
-    });
+    if(msg) {
+      var m = Emojis.parse(msg);
 
-    return m;
+      m = m.replace(/https?:\/\/(.*?)\.(jpg|png|gif)(\?\w+=\w+)?/i, function(link) {
+        return `<img src="${link}"/>`;
+      });
+
+      return m;
+    } else {
+      return '';
+    }
+
   };
 
   vm.editMsg = function(msg) {

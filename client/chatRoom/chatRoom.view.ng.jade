@@ -19,7 +19,7 @@
           img.img-avatar(ng-src="{{u.profile.picture}}")
           span.hidden-xs {{u.profile.nickName}}
   section.chat-container
-    .col-xs-12.chat-content(ng-scroll-bottom="chat.messages")
+    .chat-content(ng-scroll-bottom="chat.messages")
       p(ng-repeat="msg in chat.messages")
         span.nick-name {{msg.nickName}}
         span.created-at {{msg.createdAt | date:'MM-dd HH:mm:ss'}}
@@ -30,7 +30,7 @@
         span.content(ng-bind-html="chat.parseHtml(msg.content)")
     .chat-input
       form.input-group(ng-submit="chat.saveMsg()")
-        input.form-control.input-blue(type="text" ng-model="chat.msg.content" ng-minlength="1" ng-maxlength="200")
+        input.form-control.input-blue(type="text" ng-model="chat.msg.content")
         span.input-group-btn
           button.btn.btn-blue(type="submit")
             i.fa.fa-paper-plane
