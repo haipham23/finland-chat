@@ -20,7 +20,7 @@
           span.hidden-xs {{u.profile.nickName}}
   section.chat-container
     .chat-content(ng-scroll-bottom="chat.messages")
-      p(ng-repeat="msg in chat.messages")
+      p.paragraph(ng-repeat="msg in chat.messages")
         span.nick-name {{msg.nickName}}
         span.created-at {{msg.createdAt | date:'MM-dd HH:mm:ss'}}
         a.btn.btn-edit-msg(ng-if="msg.owner === currentUser._id" ng-click="chat.editMsg(msg)")

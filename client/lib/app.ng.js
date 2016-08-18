@@ -1,7 +1,8 @@
 angular.module('chatApp', [
   'angular-meteor',
   'ui.router',
-  'ngSanitize'
+  'ngSanitize',
+  'hc.marked'
 ]);
 
 onReady = function() {
