@@ -17,6 +17,7 @@ DONE
 - [x] Support responsive in chat room
 - [x] User can edit and remove his previous messages
 - [x] Add emoji
+- [x] Support markdown
 
 TODO
 ---
